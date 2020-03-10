@@ -1,0 +1,21 @@
+block header
+    .hero-head
+        nav.navbar
+            .container
+                .navbar-brand
+                    if menu[1].text == 'Players' && menu[1].active == 'is-active'
+                        form(style="display: flex; align-items: center;")
+                            .field.has-addons
+                                .control
+                                    input.input(type='text' placeholder='Find a repository')
+                                .control
+                                    a.button.is-info
+                                        | Search
+                    span.navbar-burger.burger(data-target='navbarMenuHeroA')
+                        span
+                        span
+                        span
+                #navbarMenuHeroA.navbar-menu
+                    .navbar-end
+                        each item in menu
+                            a(href=item.link class="navbar-item", class=item.active ? item.active : '')= item.text
