@@ -4,13 +4,12 @@ block header
             .container
                 .navbar-brand
                     if menu[1].text == 'Players' && menu[1].active == 'is-active'
-                        form(style="display: flex; align-items: center;")
+                        form(style="display: flex; align-items: center;" id="form_filter")
                             .field.has-addons
                                 .control
-                                    input.input(type='text' placeholder='Find a repository')
+                                    input.input(type='text' id="search" name="search" required placeholder='Filter player')
                                 .control
-                                    a.button.is-info
-                                        | Search
+                                    input(type="submit" value="Search").button.is-info
                     span.navbar-burger.burger(data-target='navbarMenuHeroA')
                         span
                         span
