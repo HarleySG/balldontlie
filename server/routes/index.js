@@ -7,32 +7,22 @@ const API = require("./../../API");
  */
 app.use(express.static("public"));
 app.set("view engine", "pug");
-// ------------------------- COMMAND
-const writeDB = require("./../../commands");
 // ------------------------- PORT
 const PORT = process.env.PORT;
 // ------------------------- ROUTES
 app.get("/players", (req, res) => {
-  API.get("players")
-    .then(allPlayers => {
-      res.render("players", {
-        title: "all players",
-        message: "all players!",
-        menu: [
-          { link: "/", text: "Home" },
-          { link: "/players", text: "Players", active: "is-active" },
-          { link: "/new", text: "Create" }
-        ],
-        success: allPlayers.data.length ? true : false,
-        players: allPlayers.data.length ? allPlayers.data : []
-      });
-      return allPlayers.data;
-    })
-    .then(async data => {
-      const allPlayers = data.length ? data : [];
-      const isSaved = await writeDB(allPlayers);
-      return data;
-    });
+  const db = API.get.local();
+  res.render("players", {
+    title: "all players",
+    message: "all players!",
+    menu: [
+      { link: "/", text: "Home" },
+      { link: "/players", text: "Players", active: "is-active" },
+      { link: "/new", text: "Create" }
+    ],
+    success: true,
+    players: db
+  });
 });
 app.get("/", (req, res) => {
   res.render("index", {
