@@ -8,22 +8,24 @@ html(lang="en")
         section.section
             main.container.has-text-centered
                 if success == true
-                    div(class="table-container"): table(class="table is-fullwidth")
-                        thead
-                            tr
-                                th Player ID
-                                th Full name
-                                th Team Name
-                                th Team City
-                                th Team Abbr
-                        tbody
-                            each player in players
+                    div(class="table-container")
+                        table(class="table js-table c-listPlayers is-fullwidth")
+                            thead
                                 tr
-                                    td= player.id
-                                    td= player.first_name +" "+ player.last_name
-                                    td= player.team.name
-                                    td= player.team.city
-                                    td= player.team.abbreviation
+                                    th Player ID
+                                    th Full name
+                                    th Team Name
+                                    th Team City
+                                    th Team Abbr
+                            tbody
+                                each player in players
+                                    tr(class="js-table-row")
+                                        td= player.id
+                                        td= player.first_name +" "+ player.last_name
+                                        td= player.team.name
+                                        td= player.team.city
+                                        td= player.team.abbreviation
+                        div(class="c-listPlayers-isEmpty title has-text-centered") No hay resultados en la busqueda
                 else
-                    p no hay data
+                    div(class="c-listPlayers-isEmpty title has-text-centered") No hay datos disponible en este momento.
         include ./templates/_scripts
