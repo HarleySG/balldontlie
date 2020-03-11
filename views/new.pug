@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./templates/_head
+    body
+        section.hero.is-dark
+            include ./templates/_header
+            .hero-body: .container.has-text-centered: h1.title= message
+        section.section
+            main.container.has-text-centered: form(id="form_create" method="post" name="form_create")
+                div(class="columns")
+                    div(class="column")
+                        .field
+                            label.label First name
+                            .control
+                                input.input(type='text' name="first_name" placeholder='first name' required)
+                        .field
+                            label.label Last name
+                            .control
+                                input.input(type='text' name="last_name" placeholder='last name' required)
+                    div(class="column"): div(class="columns")
+                        div(class="column")
+                            .field
+                                label.label position
+                                .control
+                                    input.input(type='text' name="position" placeholder='position' required)
+                            .field
+                                label.label Team list
+                                .control
+                                    .select
+                                        select(name="team_id" id="form_teamList" required)
+                                            option(disabled selected) Team 
+                                            //- each team in teams
+                                                option(value=team.id)= team.name
+                        div(class="column")
+                            .field
+                                label.label Height feet
+                                .control
+                                    input.input(type='text' placeholder='height feet' name="height_feet")
+                            .field
+                                label.label Height inches
+                                .control.has-icons-left.has-icons-right
+                                    input.input(type='text' placeholder='height inches' value='' name="height_inches")
+                div(class="columns" id="form-teamvalues")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='height inches' value='' name="abbreviation" required data-events="none")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='city' value='' name="city" required data-events="none")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='conference' value='' name="conference" required data-events="none")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='division' value='' name="division" required data-events="none")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='full_name' value='' name="full_name" required data-events="none")
+                    div(class="column")
+                        .field: .control.has-icons-left.has-icons-right
+                            input.input(type='text' placeholder='name' value='' name="name" required data-events="none")
+                div(class="columns")
+                    .field.is-grouped(style="    margin: auto;")
+                        .control
+                            input.button.is-link(type="submit" value="Submit")
+                        //- .control
+                            button.button.is-link.is-light Cancel
+
+
+        include ./templates/_scripts
