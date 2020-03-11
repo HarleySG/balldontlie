@@ -5,5 +5,12 @@ module.exports = {
       return { status: response.status, data: response.data.data };
     });
   },
-  local: () => require("../db/players.json")
+  local: () => {
+    try {
+      const DATA = require("../db/players.json");
+      return DATA;
+    } catch (error) {
+      return [];
+    }
+  }
 };
