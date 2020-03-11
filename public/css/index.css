@@ -1,0 +1,18 @@
+tr[data-visible="true"]{
+    display: table-row;
+}
+[data-visible="false"]{
+    display: none !important;
+}
+
+[data-events="none"] {
+    pointer-events: none;
+}
+
+.c-listPlayers-isEmpty {
+    display: none;
+}
+
+.c-listPlayers[data-visible="false"] + .c-listPlayers-isEmpty {
+    display: flex;
+}
